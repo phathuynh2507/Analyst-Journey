@@ -61,6 +61,10 @@ Utilized Built-in Linear Regression models to project **48-month forward revenue
 
 ---
 
+## 🎦 Interactive Dashboard Demo
+
+👉 [Click here to watch the full interactive demo on YouTube](https://youtu.be/7a9p4Mu7Zj8)
+
 ## 🧮 Advanced DAX Formulations
 To bypass circular dependencies and cross-table filtering issues, custom measures were built to calculate dynamic profit margins across warehouse regions:
 
