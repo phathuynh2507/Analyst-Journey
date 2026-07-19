@@ -1,4 +1,4 @@
-# 📊 Sales & Inventory Performance Analysis Dashboard
+# 📊 Sales Performance Analysis Dashboard
 
 An end-to-end Data Analytics project leveraging **SQL**, **Power BI**, and **Advanced DAX** to evaluate operational efficiency, revenue growth, and warehouse profitability for a multi-regional retail chain (2021 - 2025).
 
