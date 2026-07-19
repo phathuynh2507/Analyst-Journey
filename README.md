@@ -90,7 +90,7 @@ DIVIDE(
 ## 🔑 Key Business Insights Extracted
 1. **Product Concentration Risk:** Only two dairy brands (**Australia's Own** - $75.1bn and **Mlekovita** - $62.8bn) dominate over **71% of total revenue** across 5 years, highlighting extreme dependence on a limited SKU range.
 2. **Warehouse Performance Gap:** Northern warehouses (Bắc/Hà Nội) have significantly lower profit margins ($24\%$) compared to Southern hubs ($32\%$), pointing to inefficient local logistics or supply chain overheads.
-3. **Sales Performance:** *Trần Vinh Ng...* and *Nguyễn Chán...* consistently lead sales performance, contributing to more than 40% of the company's total $193bn revenue.
+3. **Sales Performance:** *Trần Vinh Nghĩa* and *Nguyễn Chánh Quân* consistently lead sales performance, contributing to more than 40% of the company's total $193bn revenue.
 
 ---
 
