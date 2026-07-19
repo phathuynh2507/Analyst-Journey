@@ -16,7 +16,7 @@ The company's transactional sales and logistics records were unstructured and sc
 To simulate a modern Enterprise Data Hub, the pipeline was structured as an **End-to-End Project**:
 
 ```
-[SQL Server Database] ➔ [SQL Query Transformations] ➔ [Power BI Desktop] ➔ [Star Schema Modeling] ➔ [DAX Engine]
+[Extracting Excel] ➔ [SQL Server Database] ➔ [SQL Query Transformations] ➔ [Power BI Desktop] ➔ [Star Schema Modeling] ➔ [DAX Engine]
 ```
 
 ### 1. Data Preparation (SQL Engine)
