@@ -51,7 +51,8 @@ Within Power BI, relationships were established to keep query runtimes snappy an
 ### 1. Executive Performance View
 The main dashboard delivers high-level KPI cards, interactive year slicers, and month-on-month revenue trends with advanced forecasting.
 
-<img width="1521" height="859" alt="image" src="https://github.com/user-attachments/assets/f580b148-2e0b-4f3a-aafa-67b394b0f99c" />
+<img width="1412" height="795" alt="image" src="https://github.com/user-attachments/assets/abc961f1-9669-49b8-968e-a5dc6413f912" />
+
 
 
 
