@@ -26,20 +26,23 @@ Before importing datasets into Power BI, clean relational tables were extracted 
 
 *(Sample SQL Query utilized for Product Dimension staging)*
 ```sql
-SELECT DISTINCT 
-    Mã_hàng AS Product_ID,
-    Tên_hàng AS Product_Name,
-    Mã_kho AS Warehouse_ID,
-    Tên_kho AS Warehouse_Name,
-    ĐVT AS UoM
-FROM Raw_Inventory_Table
-WHERE Mã_hàng IS NOT NULL;
+--TOP 5 employees by revenue
+SELECT TOP 5 
+    Employee_ID, 
+    SUM(CAST(Revenue AS FLOAT)) AS 'Total_Revenue', 
+    COUNT(*) AS 'Total_Order',
+    ROUND(SUM(CAST(Revenue AS FLOAT)) / COUNT(*), 0) AS 'Avg_Value_Per_Order'
+FROM Sales_detail_2021_2025
+GROUP BY Employee_ID
+ORDER BY Total_Revenue DESC;
 ```
 
 ### 2. Relational Data Modeling (Star Schema)
 Within Power BI, relationships were established to keep query runtimes snappy and logic lightweight.
 - **1 Central Fact Table:** `Fact_Sales`
 - **3 Dimension Tables:** `Dim_Products` (containing warehouse logs), `Dim_Customers`, `Dim_Employees`
+
+<img width="1571" height="810" alt="image" src="https://github.com/user-attachments/assets/b609cab3-e495-4f8b-99c2-4ff8f36ee10f" />
 
 ---
 
@@ -62,22 +65,22 @@ To bypass circular dependencies and cross-table filtering issues, custom measure
 
 ```dax
 profit_margin = 
-CALCULATE(
-    AVERAGEX(
-        FILTER(
-            VALUES(Dim_Products[Warehouse_Name]), 
-            NOT(ISBLANK(Dim_Products[Warehouse_Name])) && Dim_Products[Warehouse_Name] <> ""
-        ),
-        VAR CurrentWarehouse = Dim_Products[Warehouse_Name]
+DIVIDE(
+    SUMX(
+        tblSummary,
+        VAR TenKhoHienTai = RELATED(tblHH[Warehouse_Name])
+        VAR TiLeBien = 
+            SWITCH(
+                TRUE(),
+                ISBLANK(TenKhoHienTai) || TenKhoHienTai = "", 0.28,
+                CONTAINSSTRING(TenKhoHienTai, "Bắc") || CONTAINSSTRING(TenKhoHienTai, "Hà Nội"), 0.24,
+                CONTAINSSTRING(TenKhoHienTai, "Nam") || CONTAINSSTRING(TenKhoHienTai, "Bình Dương") || CONTAINSSTRING(TenKhoHienTai, "Q9") || CONTAINSSTRING(TenKhoHienTai, "Phú Gia"), 0.32,
+                0.28
+            )
         RETURN
-        SWITCH(
-            TRUE(),
-            CONTAINSSTRING(CurrentWarehouse, "Bắc") || CONTAINSSTRING(CurrentWarehouse, "Hà Nội"), 0.24,
-            CONTAINSSTRING(CurrentWarehouse, "Nam") || CONTAINSSTRING(CurrentWarehouse, "Bình Dương") || CONTAINSSTRING(CurrentWarehouse, "Q9") || CONTAINSSTRING(CurrentWarehouse, "Phú Gia"), 0.32,
-            0.28
-        )
+        tblSummary[Revenue] * TiLeBien
     ),
-    CROSSFILTER(Fact_Sales[Product_ID], Dim_Products[Product_ID], Both)
+    SUM(tblSummary[Revenue])
 )
 ```
 
