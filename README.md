@@ -30,7 +30,7 @@ Welcome to my Data Analytics portfolio! I am a **Data Analyst** with a backgroun
 
 ## 📬 Connect with Me
 
-- 💼 **LinkedIn:** https://www.linkedin.com/in/phathuynh02/
+- 💼 **LinkedIn:** Upcoming
 - 📧 **Email:** phathuynh250702@gmail.com
 - 🌐 **GitHub:** [https://github.com/phathuynh2507/Analyst-Journey](https://github.com/phathuynh2507/Analyst-Journey)
 
